@@ -66,6 +66,15 @@ Call this function to obtain the raw data from the corresponding registers for t
 #### int32_t BME280_GetPressureRaw(void)`
 Call this function to obtain the raw data from the corresponding registers for the pressure measurement. This function reads the `BME280_PRESS_MSB` (0xf7), `BME280_PRESS_LSB` (0xf8), and `BME280_PRESS_XLSB` (0xf9) registers, and combine them into a single 32-bit signed integer. Usually, the user do not need to use this function because there is a function to give the temperature in degrees hectopascal (hPa) in `float`.
 
+#### `int32_t BME280_GetHumidityRaw(void)`
+Call this function to obtain the raw data from the corresponding registers for the humidity measurement. This function reads the `BME280_HUM_MSB` (0xfd) and `BME280_HUM_LSB` (0xfe), and combine them into a single 32-bit signed integer. Usually, the user do not need to use this function because there is a function to give the temperature in %RH in `float`.
 
+#### `float BME280_GetTemperatureCelcius(void)`
+Call this function to obtain the temperarue value in degrees Celcius. As written in the BME280 datasheet, a complicated calculations using the trimming parameters are necessary, which is performed inside this function. A global variable `BME280_t_fine` is also calculated in this function, which is necessary to calculate the pressure and humidity.
 
+#### `float BME280_GetPressurehPa(void)`
+Call this function to obtain the pressue value in hectopascal (hPa). As written in the BME280 datasheet, a complicated calculations using the trimming parameters are necessary, which is performed inside this function. A global variable `BME280_t_fine` is necessary to calculate the pressure. Thus, the `BME280_GetTemperatureCelcius()` function shall be called prior to this function.
+
+#### `float BME280_GetHumidityPercentRH(void)`
+Call this function to obtain the humidity value in %RH. As written in the BME280 datasheet, a complicated calculations using the trimming parameters are necessary, which is performed inside this function. A global variable `BME280_t_fine` is necessary to calculate the pressure. Thus, the `BME280_GetTemperatureCelcius()` function shall be called prior to this function.
 
