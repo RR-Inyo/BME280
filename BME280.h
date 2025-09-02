@@ -1,6 +1,8 @@
 /*
  * BME280.h - Library for controlling BME280-based temperature, humidity, and pressure sensor, header file
  * (c) 2025 @RR_Inyo
+ * Released under the MIT license
+ * https://opensource.org/licenses/mit-license.php
  */
 
 #ifndef BME280_H
