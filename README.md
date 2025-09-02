@@ -54,5 +54,18 @@ Call this function to set the oversampling configurations for the pressure measu
 #### `void BME280_SetHumidityOverSampling(uint8_t os)`
 Call this function to set the oversampling configurations for the humidity measurement. Inside the header (`.h`) file, constants from ` BME280_OVERSAMPLE_NONE` to `BME280_OVERSAMPLE_16` are defined.
 
+#### `void BME280_PerformMeasurement()`
+Call this function to initiate the measurement. In other words, this function sets the BME280 to the Forced Mode (actually, this function just call the `BME280_SetMode()` function`.
+
+#### `BME280_SetMode(uint8_t mode)`
+Call this function to check if the measurement is ongoing or not. If ongoing, this function returns `true`. This function is important especially in the Forced Mode.
+
+#### `int32_t BME280_GetTemperatureRaw(void)`
+Call this function to obtain the raw data from the corresponding registers for the temperature measurement. This function reads the `BME280_TEMP_MSB` (0xfa), `BME280_TEMP_LSB` (0xfb), and `BME280_TEMP_XLSB` (0xfc) registers, and combine them into a single 32-bit signed integer. Usually, the user do not need to use this function because there is a function to give the temperature in degrees Celcius in `float`.
+
+#### int32_t BME280_GetPressureRaw(void)`
+Call this function to obtain the raw data from the corresponding registers for the pressure measurement. This function reads the `BME280_PRESS_MSB` (0xf7), `BME280_PRESS_LSB` (0xf8), and `BME280_PRESS_XLSB` (0xf9) registers, and combine them into a single 32-bit signed integer. Usually, the user do not need to use this function because there is a function to give the temperature in degrees hectopascal (hPa) in `float`.
+
+
 
 
